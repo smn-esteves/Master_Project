@@ -6,9 +6,9 @@ library(ggplot2)
 # MODEL INPUTS:
 
 # Vector storing the initial number of animals in each compartment (at timestep 0)
-initial_state_values <- c(S = 7900000,  # the whole population we are modelling is susceptible to infection
+initial_state_values <- c(S = 999999,  # the whole population we are modelling is susceptible to infection
                           E = 1, 
-                          I = 1)       
+                          I = 0)       
 
 # Vector storing the parameters describing the transition rates in units of days^-1
 parameters <- c(beta = 0.4,     # the infection rate in units of years^-1
@@ -30,7 +30,7 @@ seid_model <- function(time, state, parameters) {
   with(as.list(c(state, parameters)), {  # tell R to unpack variable names from the state and parameters inputs
     
     N <- S + E + I
-    lambda <- beta * E/N
+    lambda <- beta * I/N
     
     # The differential equations
     dS <- -lambda * S - u * S + b * N            

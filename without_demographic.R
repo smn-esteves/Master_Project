@@ -15,14 +15,14 @@ initial_state_values <- c(S = 999999,  # the whole population we're modelling
 
 # Vector storing the parameters describing the transition rates in
 # units of years^-1
-parameters <- c(beta = 0.2,      # the infection rate
-                delta = 0.1)   # the rate of recovery, which acts on 
+parameters <- c(beta = 2,      # the infection rate
+                delta = 1)   # the rate of recovery, which acts on 
 # those infected
 
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 60, by = 2/365)   
+times <- seq(from = 0, to = 60, by = 2)   
 # from 0 to 60 days in daily intervals
 
 # SIR MODEL FUNCTION: 
@@ -38,7 +38,7 @@ sie_model <- function(time, state, parameters) {
     N <- S+E+I # (the sum of the number of bovines in each compartment)
     
     # New: defining lambda as a function of beta and I:
-    lambda <- beta * E/N
+    lambda <- beta * I/N
     # Another option is simply replacing lambda with this
     # expression in the differential equations below
     
@@ -63,9 +63,14 @@ output <- as.data.frame(ode(y = initial_state_values,
 # Plotting the output
 output_long <- melt(as.data.frame(output), id = "time")                  # turn output dataset into long format
 
+# Adding a column for the prevalence proportion to the long-format output
+output_long$prevalence <- output_long$value/sum(initial_state_values)
+
+# Plot the prevalence proportion
 ggplot(data = output_long,                                               # specify object containing data to plot
-       aes(x = time, y = value, colour = variable, group = variable)) +  # assign columns to axes and groups
+       aes(x = time, y = prevalence, colour = variable, group = variable)) +  # assign columns to axes and groups
   geom_line() +                                                          # represent data as lines
-  xlab("Time (years)")+                                                   # add label for x axis
-  ylab("Number of bovines") +                                             # add label for y axis
-  labs(colour = "Compartment")                                           # add legend title
+  xlab("Time (days)")+                                                   # add label for x axis
+  ylab("Prevalence") +                                      # add label for y axis
+  labs(colour = "Compartment",                                           # add legend title
+       title = "Prevalence of susceptibility, exposed and infected over time")   # add plot title

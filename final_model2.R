@@ -26,7 +26,7 @@ parameters <- c(beta = 0.61,     # the infection rate in units of years^-1
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 20, by =1/365)#from 0 to 20 years, daily intervalS
+times <- seq(from = 0, to = 60, by =1)#from 0 to 20 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
@@ -35,7 +35,7 @@ vaccine_model <- function(time, state, parameters) {
     
     # Defining lambda as a function of beta and E:
     N <- S + E + I + Sv + Ev + Iv
-    lambda <- beta * E/N + c_i * beta * Ev/N 
+    lambda <- beta * I/N + c_i * beta * Iv/N 
     # the Ev compartment gets c_i times less infected than the E compartment
    
     
@@ -72,7 +72,7 @@ output_long$prevalence <- output_long$value/sum(initial_state_values)
 ggplot(data = output_long,                                               
        aes(x = time, y = prevalence, colour = variable, group = variable)) +  
   geom_line() +                                                          
-  xlab("Time (years)")+                                                   
+  xlab("Time (days)")+                                                   
   ylab("Proportion of the population") +
   labs(title = paste("Leaky vaccine with coverage of", 80, "%"), 
        colour = "Compartment") +
