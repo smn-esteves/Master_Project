@@ -11,16 +11,16 @@ initial_state_values <- c(S = 999999,  # the whole population we are modelling i
                           I = 0)       
 
 # Vector storing the parameters describing the transition rates in units of days^-1
-parameters <- c(beta = 0.0276,     # the infection rate in units of years^-1
-                delta = 0.0164,     # the latency period in units of years^-1
-                u = 0,#death rate
-                a = 1/7, #cull due to infection
-                b = 0) # birth rate
+parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
+                delta = 0.0164*365,     # the latency period in units of years^-1
+                u = 1/2,       #death rate
+                a = 1/(42*365),         #cull due to infection
+                b = 1/3)      # birth rate
 
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 5*365, by = 1)   # from 0 to 100 years in daily intervals
+times <- seq(from = 0, to = 20, by = 1)   # from 0 to 100 years in daily intervals
 
 # SEID MODEL FUNCTION: 
 
@@ -61,7 +61,7 @@ output_long$prevalence <- output_long$value/sum(initial_state_values)
 ggplot(data = output_long,                                               # specify object containing data to plot
        aes(x = time, y = prevalence, colour = variable, group = variable)) +  # assign columns to axes and groups
   geom_line() +                                                          # represent data as lines
-  xlab("Time (days)")+                                                   # add label for x axis
+  xlab("Time (years)")+                                                   # add label for x axis
   ylab("Prevalence") +                                      # add label for y axis
   labs(colour = "Compartment",                                           # add legend title
        title = "Prevalence of susceptibility, exposed and infected over time")   # add plot title

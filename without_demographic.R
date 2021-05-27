@@ -7,7 +7,8 @@ library(ggplot2)
 
 # Vector storing the initial number of animals in each compartment
 # (at timestep 0)
-initial_state_values <- c(S = 999999,  # the whole population we're modelling
+initial_state_values <- c(S = 999999
+                          ,  # the whole population we're modelling
                           # is susceptible to infection
                           E = 1,       
                           I = 0)       
@@ -15,14 +16,14 @@ initial_state_values <- c(S = 999999,  # the whole population we're modelling
 
 # Vector storing the parameters describing the transition rates in
 # units of years^-1
-parameters <- c(beta = 2,      # the infection rate
-                delta = 1)   # the rate of recovery, which acts on 
+parameters <- c(beta = 0.0276*365,      # the infection rate
+                delta = 0.0164*365)   # the rate of recovery, which acts on 
 # those infected
 
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 60, by = 2)   
+times <- seq(from = 0, to = 20, by = 1)   
 # from 0 to 60 days in daily intervals
 
 # SIR MODEL FUNCTION: 
@@ -70,7 +71,7 @@ output_long$prevalence <- output_long$value/sum(initial_state_values)
 ggplot(data = output_long,                                               # specify object containing data to plot
        aes(x = time, y = prevalence, colour = variable, group = variable)) +  # assign columns to axes and groups
   geom_line() +                                                          # represent data as lines
-  xlab("Time (days)")+                                                   # add label for x axis
+  xlab("Time (years)")+                                                   # add label for x axis
   ylab("Prevalence") +                                      # add label for y axis
   labs(colour = "Compartment",                                           # add legend title
        title = "Prevalence of susceptibility, exposed and infected over time")   # add plot title
