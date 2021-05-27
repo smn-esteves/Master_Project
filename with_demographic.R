@@ -20,7 +20,7 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 100, by = 1/365)   # from 0 to 100 years in daily intervals
+times <- seq(from = 0, to = 5*365, by = 1)   # from 0 to 100 years in daily intervals
 
 # SEID MODEL FUNCTION: 
 
