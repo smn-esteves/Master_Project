@@ -15,18 +15,18 @@ initial_state_values <- c(S = 1000000-1,
 # Parameters
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 delta = 0.0164*365,     # the latency period in units of years^-1
-                c_s = 0.2,       # the reduction in the force of infection
+                c_s = 0.1,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0.4,# the reduction in the infectivity of vaccinated infected people  
+                c_i = 0.8,# the reduction in the infectivity of vaccinated infected people  
                 u = 1/2,#death rate in units of years^-1
                 a = 1/(7*365), #cull due to infection in units of years^-1
                 b = 1/2, #birth rate in units of years^-1
-                vc = 0.8) # vaccine coverage    
+                vc = 0.9) # vaccine coverage    
 
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 200, by =1)#from 0 to 20 years, daily intervalS
+times <- seq(from = 0, to = 5, by =1)#from 0 to 5 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
@@ -47,7 +47,7 @@ vaccine_model <- function(time, state, parameters) {
     dEv <- c_s * lambda * Sv - delta * Ev - u * Ev
     dIv <- delta * Ev - a * Iv - u * Iv
     
-    return(list(c(dS, dI, dE, dSv, dIv,dEv))) 
+    return(list(c(dS, dE, dI, dSv, dEv,dIv))) 
   })
   
 }
