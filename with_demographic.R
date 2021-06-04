@@ -14,13 +14,13 @@ initial_state_values <- c(S = 999999,  # the whole population we are modelling i
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 delta = 0.0164*365,     # the latency period in units of years^-1
                 u = 1/2,       #death rate
-                a = 1/(42*365),         #cull due to infection
-                b = 1/3)      # birth rate
+                a = 1/(7*365),         #cull due to infection
+                b = 1/2)      # birth rate
 
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 20, by = 1)   # from 0 to 100 years in daily intervals
+times <- seq(from = 0, to = 50, by = 1)   # from 0 to 100 years in daily intervals
 
 # SEID MODEL FUNCTION: 
 

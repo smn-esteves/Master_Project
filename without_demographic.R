@@ -23,7 +23,7 @@ parameters <- c(beta = 0.0276*365,      # the infection rate
 # TIMESTEPS:
 
 # Vector storing the sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 20, by = 1)   
+times <- seq(from = 0, to = 50, by = 1)   
 # from 0 to 60 days in daily intervals
 
 # SIR MODEL FUNCTION: 
