@@ -5,9 +5,9 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1000000-3,
-                          I = 1,        
-                          E = 2,        
+initial_state_values <- c(S = 1000000-1,
+                          E = 1,        
+                          I = 0,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0)      
@@ -15,7 +15,7 @@ initial_state_values <- c(S = 1000000-3,
 # Parameters
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 delta = 0.0164*365,     # the latency period in units of years^-1
-                c_s = 0.4,       # the reduction in the force of infection
+                c_s = 0.2,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.4,# the reduction in the infectivity of vaccinated infected people  
                 u = 1/2,#death rate in units of years^-1
@@ -26,7 +26,7 @@ parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 50, by =1)#from 0 to 20 years, daily intervalS
+times <- seq(from = 0, to = 200, by =1)#from 0 to 20 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
