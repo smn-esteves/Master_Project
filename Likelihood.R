@@ -1,4 +1,4 @@
-# PACKAGES
+# Poisson distribution
 require(deSolve)
 require(ggplot2)
 
