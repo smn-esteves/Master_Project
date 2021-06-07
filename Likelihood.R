@@ -6,8 +6,8 @@ db_bTB_PS
 
 # INPUT
 initial_state_values <- c(S = 100000,  
-                          E = 1,       
-                          I = 0,
+                          E = 0,       
+                          I = 1,
                           Sv=0,
                           Ev=0,
                           Iv=0)
@@ -23,16 +23,12 @@ vaccine_model <- function(time, state, parameters) {
     N <- S + E + I + Sv + Ev + Iv
     lambda <- beta * I/N + beta + Iv/N
   
-    
-    # the Ev compartment gets c_i times less infected than the E compartment
-    
-    
     # The differential equations
-    dS <- -(beta * E/N) * S           
-    dE <- (beta * E/N) * S - delta * E 
+    dS <- -(beta * I/N + beta + Iv/N) * S           
+    dE <- (beta * I/N + beta + Iv/N) * S - delta * E 
     dI <- delta * E
-    dSv <- - (beta * E/N) * Sv              
-    dEv <-  (beta * E/N) * Sv - delta * Ev 
+    dSv <- - (beta * I/N + beta + Iv/N) * Sv              
+    dEv <-  (beta * I/N + beta + Iv/N) * Sv - delta * Ev 
     dIv <- delta * Ev  
     
     return(list(c(dS, dE, dI, dSv, dEv, dIv))) 
@@ -54,7 +50,7 @@ loglik_function <- function(parameters, dat) {   # takes as inputs the parameter
                                         delta = delta)))   # the "parameters" input argument of the loglik_function()
   
   # Calculate log-likelihood using code block 4 from the previous etivity, accounting for the reporting rate of 60%:
-  LL <- sum(dpois(x = dat$I, lambda = 0.01 * output$I[output$time %in% dat$time], log = TRUE))
+  LL <- sum(dpois(x = dat$I, lambda = 0.6 * output$I[output$time %in% dat$time], log = TRUE))
   
   return(LL) 
 }
