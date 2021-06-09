@@ -14,12 +14,12 @@ initial_state_values <- c(S = 1000000-50101,
 
 # Parameters
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
-                delta = 222/365,     # the latency period in units of years^-1
+                delta = 0.0164*365,     # the latency period in units of years^-1
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.5,# the reduction in the infectivity of vaccinated infected people  
                 u = 0.01*365,#death rate in units of years^-1
-                a = 1/(7*365), #cull due to infection in units of years^-1
+                a = (1/42)*365, #cull due to infection in units of years^-1
                 b = 0.01*365, #birth rate in units of years^-1
                 vc = 0.8) # vaccine coverage    
 
