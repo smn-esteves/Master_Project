@@ -4,11 +4,11 @@ library(reshape2)
 library(ggplot2)
 
 # MODEL INPUTS:
-
-initial_state_values <- c(S = 1000000,
+p<-0.8
+initial_state_values <- c(S = 6510000 * (1-p),
                           E = 10000,        
-                          I = 50000,        
-                          Sv = 0,      
+                          I = 325500,        
+                          Sv = 6510000 * p,      
                           Ev = 0,
                           Iv = 0)      
 
@@ -16,18 +16,18 @@ initial_state_values <- c(S = 1000000,
 #R0= 1.68 (beta/delta)
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 delta = 0.0164*365,     # the latency period in units of years^-1
-                c_s = 0,       # the reduction in the force of infection
+                c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0,# the reduction in the infectivity of vaccinated infected people  
-                u = 0.5,#death rate in units of years^-1
-                a = 1/(42*365), #cull due to infection in units of years^-1
-                b = 0.5, #birth rate in units of years^-1
-                vc = 0) # vaccine coverage    
+                c_i = 0.7,# the reduction in the infectivity of vaccinated infected people  
+                u = 0.05,#death rate in units of years^-1 
+                a = ((1/31)*365)*0.005, #cull due to infection in units of years^-1 (1/42 individuals become reactive to SITT.)
+                b = 0.05) #birth rate in units of years^-1
+          
 
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 10, by =0.1)#from 0 to 20 years, daily intervalS
+times <- seq(from = 0, to = 10, by =0.1)#from 0 to 10 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
@@ -41,11 +41,11 @@ vaccine_model <- function(time, state, parameters) {
    
     
     # The differential equations
-    dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc))           
-    dE <- lambda * S - delta * E - u * E - vc * E
+    dS <- -lambda * S - u * S + b * N * (1-p)           
+    dE <- lambda * S - delta * E - u * E - p * E
     dI <- delta * E - a * I - u * I  
-    dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc            
-    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E
+    dSv <- -c_s * lambda * Sv - u * Sv   + b * N * p            
+    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + p * E
     dIv <- delta * Ev - a * Iv - u * Iv
     
     return(list(c(dS, dE, dI, dSv, dEv,dIv))) 
