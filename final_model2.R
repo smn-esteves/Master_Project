@@ -5,23 +5,24 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1000000-50101,
-                          E = 100,        
+initial_state_values <- c(S = 1000000,
+                          E = 10000,        
                           I = 50000,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0)      
 
 # Parameters
+#R0= 1.68 (beta/delta)
 parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 delta = 0.0164*365,     # the latency period in units of years^-1
-                c_s = 0.3,       # the reduction in the force of infection
+                c_s = 0,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0.5,# the reduction in the infectivity of vaccinated infected people  
-                u = 0.01*365,#death rate in units of years^-1
+                c_i = 0,# the reduction in the infectivity of vaccinated infected people  
+                u = 0.05*365,#death rate in units of years^-1
                 a = (1/42)*365, #cull due to infection in units of years^-1
-                b = 0.01*365, #birth rate in units of years^-1
-                vc = 0.8) # vaccine coverage    
+                b = 0.05*365, #birth rate in units of years^-1
+                vc = 0) # vaccine coverage    
 
 # TIMESTEPS:
 
