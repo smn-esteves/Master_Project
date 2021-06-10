@@ -19,9 +19,9 @@ parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
                 c_s = 0,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0,# the reduction in the infectivity of vaccinated infected people  
-                u = 0.05*365,#death rate in units of years^-1
-                a = (1/42)*365, #cull due to infection in units of years^-1
-                b = 0.05*365, #birth rate in units of years^-1
+                u = 0.5,#death rate in units of years^-1
+                a = 1/(42*365), #cull due to infection in units of years^-1
+                b = 0.5, #birth rate in units of years^-1
                 vc = 0) # vaccine coverage    
 
 # TIMESTEPS:
