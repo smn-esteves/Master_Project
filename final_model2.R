@@ -4,25 +4,26 @@ library(reshape2)
 library(ggplot2)
 
 # MODEL INPUTS:
-p<-0.8
-initial_state_values <- c(S = 6510000 * (1-p),
+
+initial_state_values <- c(S = 6510000-335500,
                           E = 10000,        
                           I = 325500,        
-                          Sv = 6510000 * p,      
+                          Sv = 0,      
                           Ev = 0,
                           Iv = 0)      
 
 # Parameters
 #R0= 1.68 (beta/delta)
-parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1
-                delta = 0.0164*365,     # the latency period in units of years^-1
+parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1 0.0276
+                delta = 0.0164*365,     # the latency period in units of years^-1 0.0164
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0.7,# the reduction in the infectivity of vaccinated infected people  
-                u = 0.05,#death rate in units of years^-1 
-                a = ((1/31)*365)*0.005, #cull due to infection in units of years^-1 (1/42 individuals become reactive to SITT.)
-                b = 0.05) #birth rate in units of years^-1
-          
+                c_i = 0.8,# the reduction in the infectivity of vaccinated infected people  
+                u = 0,#death rate in units of years^-1 1/(5*365)
+                a = 0, #cull due to infection in units of years^-1
+                b = 0, #birth rate in units of years^-1
+                vc = 0.9, # vaccine coverage 
+                e= 0.7)    #vaccine efficacy
 
 # TIMESTEPS:
 
@@ -38,14 +39,14 @@ vaccine_model <- function(time, state, parameters) {
     N <- S + E + I + Sv + Ev + Iv
     lambda <- beta * I/N + c_i * beta * Iv/N 
     # the Ev compartment gets c_i times less infected than the E compartment
-   
+    
     
     # The differential equations
-    dS <- -lambda * S - u * S + b * N * (1-p)           
-    dE <- lambda * S - delta * E - u * E - p * E
+    dS <- -lambda * S - u * S  - vc*e * S + (b * N * (1-vc)*e)           
+    dE <- lambda * S - delta * E - u * E - vc*e * E
     dI <- delta * E - a * I - u * I  
-    dSv <- -c_s * lambda * Sv - u * Sv   + b * N * p            
-    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + p * E
+    dSv <- -c_s * lambda * Sv - u * Sv + vc*e * S  + b * N * vc*e            
+    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E*e
     dIv <- delta * Ev - a * Iv - u * Iv
     
     return(list(c(dS, dE, dI, dSv, dEv,dIv))) 
