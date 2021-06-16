@@ -15,16 +15,16 @@ initial_state_values <- c(S = 1691000,
 
 # Parameters
 #R0= 1.68 (beta/delta)
-parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1 0.0276
-                delta = 0.0164*365,     # the latency period in units of years^-1 0.0164
+parameters <- c(beta = 0.00239,     # the infection rate in units of years^-1 
+                delta = 0.0164*365,     # the latency period in units of years^-1 
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.8,# the reduction in the infectivity of vaccinated infected people  
-                u = 1/(5*365),#death rate in units of years^-1 1/(5*365)
-                a = 1/(1*365), #cull due to infection in units of years^-1
-                b = 1/(5*365), #birth rate in units of years^-1
-                vc = 0.8,  # vaccine coverage
-                w = 0.01) #wildife infection
+                u = 1/2,#death rate in units of years^-1 
+                a = 0.00061 , #testing rate in units of years^-1
+                b = 1/2, #birth rate in units of years^-1
+                vc = 0,  # vaccine coverage
+                w = 0.02) #wildife infection
 
 # TIMESTEPS:
 
@@ -43,13 +43,13 @@ vaccine_model <- function(time, state, parameters) {
     
     
     # The differential equations
-    dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc)) - S *w          
+    dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc)) - S * w          
     dE <- lambda * S - delta * E - u * E - vc * E
     dT <- a * I + a * Iv
     dI <- delta * E - a * I - u * I + S *w  
-    dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv *w            
+    dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
     dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E
-    dIv <- delta * Ev - a * Iv - u * Iv + Sv *w
+    dIv <- delta * Ev - a * Iv - u * Iv + Sv * w
     
     return(list(c(dS, dE, dI, dSv, dEv, dIv, dT))) 
   })
@@ -82,5 +82,5 @@ ggplot(data = output_long,
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
-incidence<- diff(output_long$value[output_long$variable=="T"])
-plot(incidence)
+#incidence<- diff(output_long$value[output_long$variable=="T"])
+#plot(incidence)
