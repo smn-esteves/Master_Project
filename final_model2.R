@@ -3,11 +3,12 @@ library(deSolve)
 library(reshape2)
 library(ggplot2)
 
+
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1691000,
-                          E = 100,        
-                          I = 8455,        
+initial_state_values <- c(S = 1675000 - 8475,
+                          E = 0,        
+                          I = 8375,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0,
@@ -15,16 +16,16 @@ initial_state_values <- c(S = 1691000,
 
 # Parameters
 #R0= 1.68 (beta/delta)
-parameters <- c(beta = 0.00239,     # the infection rate in units of years^-1 
+parameters <- c(beta = 0.0239,     # the infection rate in units of years^-1 
                 delta = 0.0164*365,     # the latency period in units of years^-1 
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0.8,# the reduction in the infectivity of vaccinated infected people  
-                u = 1/2,#death rate in units of years^-1 
-                a = 0.00061 , #testing rate in units of years^-1
-                b = 1/2, #birth rate in units of years^-1
-                vc = 0,  # vaccine coverage
-                w = 0.02) #wildife infection
+                c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
+                u = 1/5,#death rate in units of years^-1 
+                a = 0.00061 , #culling rate in units of years^-1
+                b = 1/5, #birth rate in units of years^-1
+                vc = 0,  # vaccination rate
+                w = 0.2) #wildife infection 27.75% dear (13.03% boar)
 
 # TIMESTEPS:
 
@@ -78,7 +79,7 @@ ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("Proportion of the population") +
-  labs(title = paste("Leaky vaccine with coverage of", 80, "%"), 
+  labs(title = paste("Test and slaughter and leaky vaccine"), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
