@@ -2,12 +2,12 @@
 library(deSolve)
 library(reshape2)
 library(ggplot2)
-
+#R_0=????b/(??(??+??)(??+??))
 
 # MODEL INPUTS:
 
 initial_state_values <- c(S = 1675000 - 8475,
-                          E = 0,        
+                          E = 1000,        
                           I = 8375,        
                           Sv = 0,      
                           Ev = 0,
@@ -22,9 +22,9 @@ parameters <- c(beta = 0.0239,     # the infection rate in units of years^-1
                 # acting on those vaccinated
                 c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.00061 , #culling rate in units of years^-1
+                a = 0.06146 , #culling rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0,  # vaccination rate
+                vc = 0.9,  # vaccination rate
                 w = 0.2) #wildife infection 27.75% dear (13.03% boar)
 
 # TIMESTEPS:
