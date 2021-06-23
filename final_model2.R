@@ -24,8 +24,8 @@ parameters <- c(beta = 0.0239,     # the infection rate in units of years^-1
                 u = 1/5,#death rate in units of years^-1 
                 a = 0.06146 , #culling rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0.9,  # vaccination rate
-                w = 0.2) #wildife infection 27.75% dear (13.03% boar)
+                vc = 0,  # vaccination rate
+                w = 0.06) #wildife infection 27.75% dear (13.03% boar)
 
 # TIMESTEPS:
 
