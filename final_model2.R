@@ -6,9 +6,9 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1675000 - 8475,
+initial_state_values <- c(S = 1675000 - 2031,
                           E = 1000,        
-                          I = 8375,        
+                          I = 1031,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0,
@@ -16,16 +16,16 @@ initial_state_values <- c(S = 1675000 - 8475,
 
 # Parameters
 #R0= 1.68 (beta/delta)
-parameters <- c(beta = 0.0239,     # the infection rate in units of years^-1 
+parameters <- c(beta = 0.0276*365,     # the infection rate in units of years^-1 
                 delta = 0.0164*365,     # the latency period in units of years^-1 
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.06146 , #culling rate in units of years^-1
+                a = 0.06146, #culling rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0,  # vaccination rate
-                w = 0.06) #wildife infection 27.75% dear (13.03% boar)
+                w = 0.000442) #wildife infection 27.75% dear (13.03% boar)
 
 # TIMESTEPS:
 
@@ -45,11 +45,11 @@ vaccine_model <- function(time, state, parameters) {
     
     # The differential equations
     dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc)) - S * w          
-    dE <- lambda * S - delta * E - u * E - vc * E
+    dE <- lambda * S - delta * E - u * E - vc * E + S * w
     dT <- a * I + a * Iv
     dI <- delta * E - a * I - u * I + S *w  
     dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
-    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E
+    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E + Sv * w 
     dIv <- delta * Ev - a * Iv - u * Iv + Sv * w
     
     return(list(c(dS, dE, dI, dSv, dEv, dIv, dT))) 
