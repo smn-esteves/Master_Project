@@ -17,7 +17,7 @@ initial_state_values <- c(S = 1675000 - 8475,
 # Parameters
 #R0= 1.68 (beta/delta)
 parameters <- c(beta = 5.2,     # the infection rate in units of years^-1  
-                delta = 97/365,     # the latency period in units of years^-1 
+                delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.3,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
@@ -25,7 +25,8 @@ parameters <- c(beta = 5.2,     # the infection rate in units of years^-1
                 a = 0.06146 , #culling rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0.9,  # vaccination rate
-                w = 0.000442) #wildife infection 
+                w = 0.000442, #wildife infection rate
+                r = 0.08*365)  #exposed animals which are detected (diagnose test is less effective)
 
 # TIMESTEPS:
 
@@ -45,12 +46,12 @@ vaccine_model <- function(time, state, parameters) {
     
     # The differential equations
     dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc)) - S * w          
-    dE <- lambda * S - delta * E - u * E - vc * E
+    dE <- lambda * S - delta * E - u * E - vc * E - r *E
     dT <- a * I + a * Iv
-    dI <- delta * E - a * I - u * I + S *w  
+    dI <- delta * E - a * I - u * I + S * w + r *E
     dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
-    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E
-    dIv <- delta * Ev - a * Iv - u * Iv + Sv * w
+    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E - r *Ev
+    dIv <- delta * Ev - a * Iv - u * Iv + Sv * w + r *Ev
     
     return(list(c(dS, dE, dI, dSv, dEv, dIv, dT))) 
   })
