@@ -2,7 +2,7 @@
 library(deSolve)
 library(reshape2)
 library(ggplot2)
-#R_0=????b/(??(??+??)(??+??))
+
 
 # MODEL INPUTS:
 
@@ -22,16 +22,16 @@ parameters <- c(beta = 5.2,     # the infection rate in units of years^-1
                 # acting on those vaccinated
                 c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.06146 , #culling rate in units of years^-1
+                a = 0.0615/100 , #culling rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0.9,  # vaccination rate
-                w = 0.000442, #wildife infection rate
-                r = 0.08*365)  #exposed animals which are detected (diagnose test is less effective)
+                vc = 0,  # vaccination rate
+                w = 0.000442) #wildife infection rate
+             
 
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 10, by =0.1)#from 0 to 10 years, daily intervalS
+times <- seq(from = 0, to = 100, by =0.1)#from 0 to 10 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
@@ -46,12 +46,12 @@ vaccine_model <- function(time, state, parameters) {
     
     # The differential equations
     dS <- -lambda * S - u * S  - vc * S + (b * N * (1-vc)) - S * w          
-    dE <- lambda * S - delta * E - u * E - vc * E - r *E
+    dE <- lambda * S - delta * E - u * E - vc * E - E*a
     dT <- a * I + a * Iv
-    dI <- delta * E - a * I - u * I + S * w + r *E
+    dI <- delta * E - a * I - u * I + S * w 
     dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
-    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E - r *Ev
-    dIv <- delta * Ev - a * Iv - u * Iv + Sv * w + r *Ev
+    dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E - Ev*a 
+    dIv <- delta * Ev - a * Iv - u * Iv + Sv * w 
     
     return(list(c(dS, dE, dI, dSv, dEv, dIv, dT))) 
   })
