@@ -23,7 +23,7 @@ parameters <- c(beta = 5.2,     # the infection rate in units of years^-1
                 # acting on those vaccinated
                 c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.000615 , #culling rate in units of years^-1
+                a = 0.71 , #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0.9,  # vaccination rate
                 w = 0.000442) #wildife infection rate
