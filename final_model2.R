@@ -6,26 +6,26 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1224000 - 2891,
+initial_state_values <- c(S = 1224000 - 2884,
                           E = 1000,        
-                          I = 1891,        
+                          I = 1884,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0,
                           T = 0)      
 
 # Parameters
-#R0=????b/(??(??+??)(??+??))= 24.57
-#R0= beta/delta = 1.42
+#R0=????b/(??(??+??)(??+??))= 5.4
+
 parameters <- c(beta = 5.2,     # the infection rate in units of years^-1  
                 delta = 0.01*365,     # the latency period in units of years^-1 
-                c_s = 0.3,       # the reduction in the force of infection
+                c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
-                c_i = 0.3,# the reduction in the infectivity of vaccinated infected bovines  
+                c_i = 0.39,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
                 a = 0.71 , #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0,  # vaccination rate
+                vc = 0.9,  # vaccination rate
                 w = 0.000442) #wildife infection rate
               
              
