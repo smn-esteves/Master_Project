@@ -6,9 +6,9 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1675000 - 8475,
+initial_state_values <- c(S = 1224000 - 2891,
                           E = 1000,        
-                          I = 8375,        
+                          I = 1891,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0,
