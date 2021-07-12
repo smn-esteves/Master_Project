@@ -15,9 +15,9 @@ initial_state_values <- c(S = 1224000 - 2884,
                           T = 0)      
 
 # Parameters
-#R0=????b/(??(??+??)(??+??))= 5.4
+#R0=5.4
 
-parameters <- c(beta = 5.2,     # the infection rate in units of years^-1  
+parameters <- c(beta = 5.2/2,     # the infection rate in units of years^-1  
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
@@ -25,8 +25,8 @@ parameters <- c(beta = 5.2,     # the infection rate in units of years^-1
                 u = 1/5,#death rate in units of years^-1 
                 a = 0.71 , #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0.9,  # vaccination rate
-                w = 0.000442) #wildife infection rate
+                vc = 0,  # vaccination rate
+                w = 0.131) #wildife infection rate
               
              
 
@@ -47,7 +47,7 @@ vaccine_model <- function(time, state, parameters) {
     
     
     # The differential equations
-    dS <- -lambda * S - u * S - S * w - vc * S + (b * N * (1-vc))          
+    dS <- -lambda * S - u * S - S * w - vc * S + (b * N * (1-vc))+ a * I + a * Iv        
     dE <- lambda * S - delta * E - u * E - vc * E 
     dT <- a * I + a * Iv
     dI <- delta * E - a * I - u * I + S * w 
@@ -88,3 +88,4 @@ ggplot(data = output_long,
 
 #incidence<- diff(output_long$value[output_long$variable=="T"])
 #plot(incidence)
+lambda <- 5.2/2 * (output_long$value[output_long$variable=="I"])
