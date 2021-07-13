@@ -16,7 +16,7 @@ initial_state_values <- c(S = 1224000 - 2884,
 # Parameters
 #R0=5.4
 
-parameters <- c(beta = 5.2/5,     # the infection rate in units of years^-1  
+parameters <- c(beta = 5.2/10,     # the infection rate in units of years^-1  
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
@@ -46,7 +46,7 @@ vaccine_model <- function(time, state, parameters) {
     
     
     # The differential equations
-    dS <- -lambda * S - u * S - S * w - vc * S + (b * N * (1-vc))+ a * I + a * Iv        
+    dS <- -lambda * S - u * S - S * w - vc * S + (b * N * (1-vc))+ a * I + a * Iv
     dE <- lambda * S - delta * E - u * E - vc * E 
     dI <- delta * E - a * I - u * I + S * w 
     dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
