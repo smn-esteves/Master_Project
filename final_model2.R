@@ -11,13 +11,12 @@ initial_state_values <- c(S = 1224000 - 2884,
                           I = 1884,        
                           Sv = 0,      
                           Ev = 0,
-                          Iv = 0,
-                          T = 0)      
+                          Iv = 0)      
 
 # Parameters
 #R0=5.4
 
-parameters <- c(beta = 5.2/2,     # the infection rate in units of years^-1  
+parameters <- c(beta = 5.2/5,     # the infection rate in units of years^-1  
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
@@ -33,7 +32,7 @@ parameters <- c(beta = 5.2/2,     # the infection rate in units of years^-1
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 10, by =0.1)#from 0 to 10 years, daily intervalS
+times <- seq(from = 0, to = 20, by =0.1)#from 0 to 10 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
@@ -49,13 +48,12 @@ vaccine_model <- function(time, state, parameters) {
     # The differential equations
     dS <- -lambda * S - u * S - S * w - vc * S + (b * N * (1-vc))+ a * I + a * Iv        
     dE <- lambda * S - delta * E - u * E - vc * E 
-    dT <- a * I + a * Iv
     dI <- delta * E - a * I - u * I + S * w 
     dSv <- -c_s * lambda * Sv - u * Sv + vc * S  + b * N * vc - Sv * w            
     dEv <- c_s * lambda * Sv - delta * Ev - u * Ev + vc * E 
     dIv <- delta * Ev - a * Iv - u * Iv + Sv * w 
     
-    return(list(c(dS, dE, dI, dSv, dEv, dIv, dT))) 
+    return(list(c(dS, dE, dI, dSv, dEv, dIv))) 
   })
   
 }
@@ -88,4 +86,4 @@ ggplot(data = output_long,
 
 #incidence<- diff(output_long$value[output_long$variable=="T"])
 #plot(incidence)
-lambda <- 5.2/2 * (output_long$value[output_long$variable=="I"])
+#lambda <- 5.2/2 * (output_long$value[output_long$variable=="I"])
