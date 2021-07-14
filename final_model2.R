@@ -16,16 +16,16 @@ initial_state_values <- c(S = 1224000 - 2884,
 # Parameters
 #R0=5.4
 
-parameters <- c(beta = 5.2/10,     # the infection rate in units of years^-1  
+parameters <- c(beta = 0.5,     # the infection rate in units of years^-1  5.2
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
                 c_i = 0.39,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.71 , #testing rate in units of years^-1
+                a = 0.71, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0,  # vaccination rate
-                w = 0.131) #wildife infection rate
+                w = 0.002 ) #wildife infection rate 0.131
               
              
 
