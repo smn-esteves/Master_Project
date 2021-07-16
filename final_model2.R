@@ -14,9 +14,9 @@ initial_state_values <- c(S = 1224000 - 2884,
                           Iv = 0)      
 
 # Parameters
-#R0=5.4
+#R0=0.42
 
-parameters <- c(beta = 0.5,     # the infection rate in units of years^-1  5.2
+parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
