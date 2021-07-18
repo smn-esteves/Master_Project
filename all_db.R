@@ -57,11 +57,11 @@ db_bTB_PS%>%
 
 x<-db_bTB%>% 
   group_by(time=Year, Herd) %>%
-  summarise(prevalence = round(((Positive))/((Total_tests))*100)) #percentage of positive animals per year
+  summarise(prevalence = round((sum(Positive))/(sum(Total_tests))*100)) #percentage of positive animals per year
 
 y<- x%>%
   group_by(time) %>%
-  summarise(prevalence=round(mean(prevalence),digits=3))
+  summarise(prevalence1=round(mean(prevalence),digits=3))
 
 mean(y$prevalence)
 
