@@ -24,7 +24,7 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
                 u = 1/5,#death rate in units of years^-1 
                 a = 1, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0,  # vaccination rate
+                vc = 1,  # vaccination rate
                 w = 0.002 ) #wildife infection rate 0.131
               
              
