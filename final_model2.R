@@ -32,7 +32,7 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 15, by =0.1)#from 0 to 10 years, daily intervalS
+times <- seq(from = 0, to = 1000, by =0.1)#from 0 to 10 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
