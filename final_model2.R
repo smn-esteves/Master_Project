@@ -22,9 +22,9 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
                 # acting on those vaccinated
                 c_i = 0.39,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 1, #testing rate in units of years^-1
+                a = 0.71, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 1,  # vaccination rate
+                vc = 0,  # vaccination rate
                 w = 0.002 ) #wildife infection rate 0.131
               
              
@@ -32,7 +32,7 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 1000, by =0.1)#from 0 to 10 years, daily intervalS
+times <- seq(from = 0, to = 15, by =0.1)#from 0 to 10 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
