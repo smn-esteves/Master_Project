@@ -6,9 +6,9 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1224000 - 12138,
+initial_state_values <- c(S = 1224000- 3461,
                           E = 1000,        
-                          I = 11138,        
+                          I = 2461,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0)      
@@ -16,7 +16,7 @@ initial_state_values <- c(S = 1224000 - 12138,
 # Parameters
 #R0=0.42
 
-parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
+parameters <- c(beta = 0.01,     # the infection rate in units of years^-1  5.2
                 delta = 0.01*365,     # the latency period in units of years^-1 
                 c_s = 0.39,       # the reduction in the force of infection
                 # acting on those vaccinated
@@ -25,7 +25,7 @@ parameters <- c(beta = 0.4,     # the infection rate in units of years^-1  5.2
                 a = 0.71, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0,  # vaccination rate
-                w = 0.002 ) #wildife infection rate 0.131
+                w = 0.0009 ) #wildife infection rate 0.131
               
              
 
@@ -76,7 +76,7 @@ output_long$prevalence <- output_long$value/sum(initial_state_values)
 
 # Plot the number in each compartment over time
 ggplot(data = output_long,                                               
-       aes(x = time, y = prevalence, colour = variable, group = variable)) +  
+       aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("Proportion of the population") +

@@ -135,3 +135,9 @@ i<- db_bTB %>%
 i %>%
   ggplot(aes(x = herd_size_range1, y = Positive)) +
   geom_point()
+
+t<-db_bTB%>% 
+  filter(Year == 2010, Positive >= 1)
+
+sum(t$Positive)
+
