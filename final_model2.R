@@ -79,7 +79,7 @@ ggplot(data = output_long,
        aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("Proportion of the population") +
+  ylab("log (Proportion of the population)") +
   labs(title = paste("Test and slaughter and leaky vaccine"), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
