@@ -6,9 +6,9 @@ library(ggplot2)
 
 # MODEL INPUTS:
 
-initial_state_values <- c(S = 1381000- 1967,
+initial_state_values <- c(S = 1224000- 4672,
                           E = 1000,        
-                          I = 967,        
+                          I = 3672,        
                           Sv = 0,      
                           Ev = 0,
                           Iv = 0)      
@@ -24,15 +24,15 @@ parameters <- c(beta = 0.01,     # the infection rate in units of years^-1  5.2
                 u = 1/5,#death rate in units of years^-1 
                 a = 0.71, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
-                vc = 0.9,  # vaccination rate
-                w = 0.0007 ) #wildife infection rate 0.131
+                vc = 0,  # vaccination rate
+                w = 0.0009 ) #wildife infection rate 0.131
               
              
 
 # TIMESTEPS:
 
 # Sequence of timesteps to solve the model at
-times <- seq(from = 0, to = 5, by =0.1)#from 0 to 10 years, daily intervalS
+times <- seq(from = 0, to = 15, by =0.1)#from 0 to 15 years, daily intervalS
 # MODEL FUNCTION: 
 
 vaccine_model <- function(time, state, parameters) {  
