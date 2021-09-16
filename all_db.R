@@ -43,7 +43,12 @@ db_bTB <- db_bTB[!db_bTB$DiCo=="0816",]
 library(dplyr)
 db_bTB_PS<- db_bTB %>% 
   group_by(time=Year) %>%
-  summarise(I= sum(Positive))
+  summarise(sum(Positive))
+
+db_bTB_test<- db_bTB %>% 
+  group_by(time=Year) %>%
+  summarise(sum(Total_tests))
+
   #mutate(PercentagePs = ps/sum(ps)*100)
 db_bTB_PS$I <- round(db_bTB_PS$I)
 
@@ -63,7 +68,7 @@ y<- x%>%
   group_by(time) %>%
   summarise(prevalence1=round(mean(prevalence),digits=3))
 
-mean(y$prevalence)
+mean(y$prevalence1)
 
 x1<-db_bTB%>% 
   group_by(time=Year, Herd) %>%
