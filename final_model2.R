@@ -22,7 +22,7 @@ parameters <- c(beta = 0.01,     # the infection rate in units of years^-1  5.2
                 # acting on those vaccinated
                 c_i = 0.39,# the reduction in the infectivity of vaccinated infected bovines  
                 u = 1/5,#death rate in units of years^-1 
-                a = 0.71, #testing rate in units of years^-1
+                a = 0.77, #testing rate in units of years^-1
                 b = 1/5, #birth rate in units of years^-1
                 vc = 0,  # vaccination rate
                 w = 0.0009 ) #wildife infection rate 0.131
@@ -84,6 +84,8 @@ ggplot(data = output_long,
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
+#install.packages("gridExtra")
+#install.packages("egg")
 #incidence<- diff(output_long$value[output_long$variable=="T"])
 #plot(incidence)
 #lambda <- 5.2/2 * (output_long$value[output_long$variable=="I"])
