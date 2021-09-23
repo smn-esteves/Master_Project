@@ -80,7 +80,7 @@ g1<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter,", alpha, "= 0.77 and vc = 0")), 
+  labs(title = expression(paste("a) Test and slaughter,", alpha, "= 0.77 and vc = 0")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
@@ -169,7 +169,7 @@ g2<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.5")), 
+  labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.5")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
@@ -257,7 +257,7 @@ g3<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.7")), 
+  labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.7")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
@@ -344,7 +344,7 @@ g4<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.9")), 
+  labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.9")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")
 
