@@ -82,7 +82,8 @@ g1<- ggplot(data = output_long,
   ylab("log (Proportion of the population)") +
   labs(title = expression(paste("a) Test and slaughter,", alpha, "= 0.77 and vc = 0")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 ############
@@ -171,7 +172,8 @@ g2<- ggplot(data = output_long,
   ylab("log (Proportion of the population)") +
   labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.5")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 ###########
 
@@ -259,7 +261,8 @@ g3<- ggplot(data = output_long,
   ylab("log (Proportion of the population)") +
   labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.7")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 ###############
 # LOAD THE PACKAGES:
@@ -346,7 +349,8 @@ g4<- ggplot(data = output_long,
   ylab("log (Proportion of the population)") +
   labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.9")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 # LOAD THE PACKAGES:
@@ -431,9 +435,10 @@ g5<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 1")), 
+  labs(title = expression(paste("e) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 1")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 library("gridExtra")
 library("egg")
@@ -523,9 +528,10 @@ g1<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter,", alpha, "= 0.9 and vc = 0")), 
+  labs(title = expression(paste("a) Test and slaughter,", alpha, "= 0.9 and vc = 0")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 ############
@@ -612,9 +618,10 @@ g2<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.5")), 
+  labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.5")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 ###########
 
@@ -700,9 +707,10 @@ g3<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.7")), 
+  labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.7")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 ###############
 # LOAD THE PACKAGES:
@@ -787,9 +795,10 @@ g4<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.9")), 
+  labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.9")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 # LOAD THE PACKAGES:
@@ -874,9 +883,10 @@ g5<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 1")), 
+  labs(title = expression(paste("e) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 1")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 library("gridExtra")
 library("egg")
@@ -966,9 +976,10 @@ g1<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter,", alpha, "= 1 and vc = 0")), 
+  labs(title = expression(paste("a) Test and slaughter,", alpha, "= 1 and vc = 0")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 ############
@@ -1055,9 +1066,10 @@ g2<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.5")), 
+  labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.5")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 ###########
 
@@ -1143,9 +1155,10 @@ g3<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.7")), 
+  labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.7")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2")+
+  theme(plot.title = element_text(vjust = 3))
 
 ###############
 # LOAD THE PACKAGES:
@@ -1230,9 +1243,10 @@ g4<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.9")), 
+  labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.9")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 
 # LOAD THE PACKAGES:
@@ -1317,9 +1331,10 @@ g5<- ggplot(data = output_long,
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
   ylab("log (Proportion of the population)") +
-  labs(title = expression(paste("Test and slaughter and vaccination,", alpha, "= 1 and vc = 1")), 
+  labs(title = expression(paste("e)Test and slaughter and vaccination,", alpha, "= 1 and vc = 1")), 
        colour = "Compartment") +
-  scale_colour_brewer(palette = "Set2")
+  scale_colour_brewer(palette = "Set2") +
+  theme(plot.title = element_text(vjust = 3))
 
 library("gridExtra")
 library("egg")
