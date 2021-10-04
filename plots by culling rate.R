@@ -79,7 +79,7 @@ g1<- ggplot(data = output_long,
        aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("a) Test and slaughter,", alpha, "= 0.77 and vc = 0")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -169,7 +169,7 @@ g2<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.5")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -258,7 +258,7 @@ g3<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.7")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -346,12 +346,12 @@ g4<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 0.9")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
   theme(plot.title = element_text(vjust = 3))
-
+########
 
 # LOAD THE PACKAGES:
 library(deSolve)
@@ -434,7 +434,7 @@ g5<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("e) Test and slaughter and vaccination,", alpha, "= 0.77 and vc = 1")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -527,7 +527,7 @@ g1<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("a) Test and slaughter,", alpha, "= 0.9 and vc = 0")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -617,7 +617,7 @@ g2<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.5")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -706,7 +706,7 @@ g3<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.7")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -794,7 +794,7 @@ g4<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 0.9")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -882,7 +882,7 @@ g5<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("e) Test and slaughter and vaccination,", alpha, "= 0.9 and vc = 1")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -975,7 +975,7 @@ g1<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("a) Test and slaughter,", alpha, "= 1 and vc = 0")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -1065,7 +1065,7 @@ g2<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("b) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.5")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -1154,7 +1154,7 @@ g3<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("c) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.7")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2")+
@@ -1242,7 +1242,7 @@ g4<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("d) Test and slaughter and vaccination,", alpha, "= 1 and vc = 0.9")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
@@ -1330,7 +1330,7 @@ g5<- ggplot(data = output_long,
             aes(x = time, y = log(prevalence), colour = variable, group = variable)) +  
   geom_line() +                                                          
   xlab("Time (years)")+                                                   
-  ylab("log (Proportion of the population)") +
+  ylab("log (Proportion population)") +
   labs(title = expression(paste("e)Test and slaughter and vaccination,", alpha, "= 1 and vc = 1")), 
        colour = "Compartment") +
   scale_colour_brewer(palette = "Set2") +
